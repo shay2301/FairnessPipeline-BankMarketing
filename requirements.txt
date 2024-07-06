@@ -17,4 +17,5 @@ tqdm
 typer
 ucimlrepo
 flask
+seaborn
 -e .
