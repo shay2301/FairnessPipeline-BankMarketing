@@ -1,5 +1,11 @@
+from ucimlrepo import fetch_ucirepo
 import pandas as pd
 
-def load_data(file_path, delimiter=";"):
-    data = pd.read_csv(file_path, delimiter=delimiter)
-    return data
+def load_data(repo_id):
+    data = fetch_ucirepo(id=repo_id)
+    X = pd.DataFrame(data.data.features)
+    y = pd.DataFrame(data.data.targets, columns=['target'])
+
+    df = pd.concat([X, y], axis=1)
+
+    return df
