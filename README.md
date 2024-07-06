@@ -8,8 +8,11 @@ End to end mlops pipeline flow for a banking marketing campaign.
 
 # Meet the Team:
 Shay Levi
+
 Nadav Ben Itzhak
+
 Niv Leibovitch 
+
 Zack Shipman
 
 ## Project Organization
