@@ -6,11 +6,17 @@
 
 End to end mlops pipeline flow for a banking marketing campaign.
 
+# Meet the Team:
+Shay Levi
+Nadav Ben Itzhak
+Niv Leibovitch 
+Zack Shipman
+
 ## Project Organization
 
 ```
-├── LICENSE            <- Open-source license if one is chosen
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
+├── LICENSE           
+├── Makefile           <- commands to run data `make data` or `make train`
 ├── README.md          <- The top-level README for developers using this project.
 ├── data
 │   ├── external       <- Data from third party sources.
@@ -18,7 +24,7 @@ End to end mlops pipeline flow for a banking marketing campaign.
 │   ├── processed      <- The final, canonical data sets for modeling.
 │   └── raw            <- The original, immutable data dump.
 │
-├── docs               <- A default mkdocs project; see mkdocs.org for details
+├── docs               <- MLops Superteam docs
 │
 ├── models             <- Trained and serialized models, model predictions, or model summaries
 │
@@ -41,7 +47,7 @@ End to end mlops pipeline flow for a banking marketing campaign.
 │
 └── fairnesspipeline_bankmarketing                <- Source code for use in this project.
     │
-    ├── __init__.py    <- Makes fairnesspipeline_bankmarketing a Python module
+    ├── __init__.py    
     │
     ├── data           <- Scripts to download or generate data
     │   └── make_dataset.py
