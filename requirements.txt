@@ -16,4 +16,5 @@ scikit-learn
 tqdm
 typer
 ucimlrepo
+flask
 -e .
