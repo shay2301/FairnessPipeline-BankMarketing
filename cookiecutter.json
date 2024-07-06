@@ -1,7 +1,7 @@
 {
     "project_name": "FairnessPipeline-BankMarketing",
     "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '_') }}",
-    "author_name": "Shay Levi",
-    "email": "shay2301@gmail.com",
-    "github_username": "shay2301"
+    "author_name": "Zack Shipman",
+    "email": "zackshipman23@gmail.com",
+    "github_username": "zackship"
 }
