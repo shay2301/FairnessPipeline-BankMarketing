@@ -15,4 +15,5 @@ python-dotenv
 scikit-learn
 tqdm
 typer
+ucimlrepo
 -e .
