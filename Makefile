@@ -3,7 +3,7 @@
 #################################################################################
 
 PROJECT_NAME = fairnesspipeline-bankmarketing
-PYTHON_VERSION = 3.10
+PYTHON_VERSION = 3.11.5
 PYTHON_INTERPRETER = python
 
 #################################################################################
