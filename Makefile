@@ -60,11 +60,11 @@ config: requirements
 dataset: config
 	$(VENV_DIR)/bin/python modeling/dataset.py
 
-sanity_checks: sanity_checks
-	$(VENV_DIR)/bin/python modeling/sanity_checks.py	
-
 features: dataset
 	$(VENV_DIR)/bin/python modeling/features.py
+
+sanity_checks: sanity_checks
+	$(VENV_DIR)/bin/python modeling/sanity_checks.py
 
 train: features
 	$(VENV_DIR)/bin/python modeling/train.py

@@ -16,9 +16,6 @@ def main(
     logger.info("Loading preprocessed data...")
     df = pd.read_pickle(input_path)
 
-    logger.info("Running sanity checks on features...")
-    sanity_check_script = PROJ_ROOT / "modeling" / "sanity_checks.py"
-    subprocess.run(["python", str(sanity_check_script), str(input_path)], check=True)
 
     logger.info("Manipulating the data to train-test split...")
     data_y = pd.DataFrame(df['y'])

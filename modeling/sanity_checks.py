@@ -1,3 +1,4 @@
+from config import PROJ_ROOT, PROCESSED_DATA_DIR, Path
 import pandas as pd
 from loguru import logger
 import typer
@@ -6,8 +7,8 @@ import numpy as np
 app = typer.Typer()
 
 @app.command()
-def check_features(features_path: str):
-    logger.info("Loading features data...")
+def check_features(features_path: Path = PROCESSED_DATA_DIR / "dataset_processed.pkl"):
+    logger.info(f"Loading features data from {features_path}...")
     df = pd.read_pickle(features_path)
     
     missing_values_report = {}

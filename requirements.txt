@@ -7,7 +7,7 @@ loguru
 matplotlib
 mkdocs
 notebook
-numpy
+numpy==1.21.0
 pandas
 pip
 python-dotenv

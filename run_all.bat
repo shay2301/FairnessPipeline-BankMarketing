@@ -10,8 +10,8 @@ pip install -r requirements.txt
 echo Running scripts...
 python modeling\config.py
 python modeling\dataset.py
-python modeling\sanity_checks.py
 python modeling\features.py
+python modeling\sanity_checks.py
 python modeling\train.py
 python modeling\predict.py
 python modeling\database.py
