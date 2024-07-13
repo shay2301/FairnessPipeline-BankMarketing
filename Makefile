@@ -22,8 +22,17 @@ endif
 
 .PHONY: requirements
 requirements: $(ACTIVATE_SCRIPT)
-	$(PIP) install -U pip
+ifeq ($(OS),Windows_NT)
+	@echo "Upgrading pip using Python module..."
+	$(PYTHON) -m pip install --upgrade pip
+	@echo "Installing requirements from requirements.txt using Python module..."
+	$(PYTHON) -m pip install -r requirements.txt
+else
+	@echo "Upgrading pip..."
+	$(PIP) install --upgrade pip
+	@echo "Installing requirements from requirements.txt..."
 	$(PIP) install -r requirements.txt
+endif
 
 ## Create Virtual Environment
 $(ACTIVATE_SCRIPT): 
