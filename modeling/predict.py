@@ -1,30 +1,37 @@
+import sys
 from pathlib import Path
-
+sys.path.append(str(Path(__file__).resolve().parents[1]))
 import typer
 from loguru import logger
-from tqdm import tqdm
-
-from fairnesspipeline_bankmarketing.config import MODELS_DIR, PROCESSED_DATA_DIR
+import pandas as pd
+import xgboost as xgb
+from config import MODELS_DIR, PROCESSED_DATA_DIR, EXTERNAL_DATA_DIR
 
 app = typer.Typer()
 
-
 @app.command()
-def main(
-    # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
-    features_path: Path = PROCESSED_DATA_DIR / "test_features.csv",
-    model_path: Path = MODELS_DIR / "model.pkl",
-    predictions_path: Path = PROCESSED_DATA_DIR / "test_predictions.csv",
-    # -----------------------------------------
+def predict(
+    features_path: Path = PROCESSED_DATA_DIR / "X_test.pkl",
+    model_path: Path = MODELS_DIR / "XGB_Model.json",
+    predictions_path: Path = EXTERNAL_DATA_DIR / "predictions.json"
 ):
-    # ---- REPLACE THIS WITH YOUR OWN CODE ----
-    logger.info("Performing inference for model...")
-    for i in tqdm(range(10), total=10):
-        if i == 5:
-            logger.info("Something happened for iteration 5.")
-    logger.success("Inference complete.")
-    # -----------------------------------------
+    logger.info("Loading test data and model...")
+    X_test = pd.read_pickle(features_path)
+    dtest = xgb.DMatrix(X_test)
 
+    XGB_Model = xgb.Booster()
+    XGB_Model.load_model(model_path)
+
+    logger.info("Making predictions...")
+    predictions = XGB_Model.predict(dtest)
+
+    predictions_df = pd.DataFrame({
+        'id': X_test.index,
+        'deposit_predict': predictions[:, 1],
+    })
+    predictions_df.to_json(predictions_path, orient='records')
+    
+    logger.success("Predictions made and saved.")
 
 if __name__ == "__main__":
     app()
