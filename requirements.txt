@@ -18,4 +18,9 @@ typer
 ucimlrepo
 flask
 seaborn
+tqdm
+sys
+duckdb
+pathlib
+xgboost
 -e .
