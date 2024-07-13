@@ -9,46 +9,6 @@ VENV_DIR = .venv
 
 
 #################################################################################
-# Check for make on different systems and correct the path                                                              #
-#################################################################################
-
-.PHONY: install-make
-install-make:
-	@echo "Checking for Make..."
-	@{ \
-		install_make_linux() { \
-			sudo apt-get update && sudo apt-get install -y build-essential; \
-		}; \
-		install_make_mac() { \
-			brew install make; \
-		}; \
-		install_make_windows() { \
-			powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; iwr -useb get.scoop.sh | iex; scoop install make; $$scoopPath = '$$(scoop config SCOOP_GLOBAL)/shims'; if (-Not [System.Environment]::GetEnvironmentVariable('PATH', [System.EnvironmentVariableTarget]::User) -like '*scoop*') { [System.Environment]::SetEnvironmentVariable('PATH', [System.Environment]::GetEnvironmentVariable('PATH', [System.EnvironmentVariableTarget]::User) + ';' + $$scoopPath, [System.EnvironmentVariableTarget]::User); }"; \
-		}; \
-		ensure_make_in_path() { \
-			if ! command -v make >/dev/null; then \
-				echo "Make is not in PATH or not installed correctly."; \
-				exit 1; \
-			else \
-				echo "Make is available in PATH."; \
-			fi; \
-		}; \
-		case "$$(uname)" in \
-			Linux) \
-				command -v make >/dev/null || install_make_linux;; \
-			Darwin) \
-				command -v make >/dev/null || install_make_mac;; \
-			*CYGWIN*|*MINGW*|*MSYS*|*WIN*) \
-				command -v make >/dev/null || install_make_windows;; \
-			*) \
-				echo "Unsupported OS"; \
-				exit 1;; \
-		esac; \
-		ensure_make_in_path; \
-	}
-
-
-#################################################################################
 # COMMANDS   
 #"In terminal write 'make run_all' to run the full flow :)#                                                                #
 #################################################################################
@@ -114,8 +74,13 @@ database: predict
 	
 
 .PHONY: run_all
-run_all: database
+run_all:
+ifeq ($(OS),Windows_NT)
+	cmd /c run_all.bat
+else
+	make database
 	@echo "All scripts executed in order."
+endif
 
 .DEFAULT_GOAL := help
 

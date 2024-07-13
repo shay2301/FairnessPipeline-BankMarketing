@@ -15,11 +15,23 @@ Niv Leibovitch
 
 Zack Shipman
 
+## Project Prerequisites:
+
+This project requires GNU Make. Here's how to install it on various systems:
+
+- **Ubuntu/Debian**: `sudo apt-get update && sudo apt-get install build-essential`
+- **macOS**: Install [Homebrew](https://brew.sh) if not installed, then `brew install make`.
+- **Windows**: Follow the guide to install [Scoop](https://scoop.sh), then `scoop install make`.
+
+Ensure `make` is available in your PATH by running `make --version`.
+
+
 ## Project Organization
 
 ```
 ├── LICENSE           
 ├── Makefile           <- commands to run data 'make run_all'
+|── run_all            <- batch file for windows users - navigate to file and double click or cmd 'run_all.bat'
 ├── README.md          <- The top-level README for developers using this project.
 ├── data
 │   ├── external       <- Data from third party sources.
