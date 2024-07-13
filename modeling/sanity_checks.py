@@ -2,7 +2,7 @@ from config import PROJ_ROOT, PROCESSED_DATA_DIR, Path
 import pandas as pd
 from loguru import logger
 import typer
-import numpy as np  # Ensure numpy is imported
+import numpy as np 
 
 app = typer.Typer()
 
