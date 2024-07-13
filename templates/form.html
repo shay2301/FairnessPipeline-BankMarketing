@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Entry Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Data Entry Form</h1>
+    <form method="post">
+        <div>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+        </div>
+        <div>
+            <label for="job">Job:</label>
+            <select id="job" name="job" required>
+                <option value="" disabled selected>Select job</option>
+                <option value="admin.">admin.</option>
+                <option value="blue-collar">blue-collar</option>
+                <option value="entrepreneur">entrepreneur</option>
+                <option value="housemaid">housemaid</option>
+                <option value="management">management</option>
+                <option value="retired">retired</option>
+                <option value="self-employed">self-employed</option>
+                <option value="services">services</option>
+                <option value="student">student</option>
+                <option value="technician">technician</option>
+                <option value="unemployed">unemployed</option>
+                <option value="unknown">unknown</option>
+            </select>
+        </div>
+        <div>
+            <label for="marital">Marital Status:</label>
+            <select id="marital" name="marital" required>
+                <option value="" disabled selected>Select marital status</option>
+                <option value="divorced">divorced</option>
+                <option value="widowed">widowed</option>
+                <option value="married">married</option>
+                <option value="single">single</option>
+                <option value="unknown">unknown</option>
+            </select>
+        </div>
+        <div>
+            <label for="education">Education:</label>
+            <select id="education" name="education" required>
+                <option value="" disabled selected>Select education</option>
+                <option value="basic.4y">basic.4y</option>
+                <option value="basic.6y">basic.6y</option>
+                <option value="basic.9y">basic.9y</option>
+                <option value="high.school">high.school</option>
+                <option value="illiterate">illiterate</option>
+                <option value="professional.course">professional.course</option>
+                <option value="university.degree">university.degree</option>
+                <option value="unknown">unknown</option>
+            </select>
+        </div>
+        <div>
+            <label for="default">Has credit in default?</label>
+            <select id="default" name="default" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div>
+            <label for="balance">Balance:</label>
+            <input type="number" id="balance" name="balance" required>
+        </div>
+        <div>
+            <label for="housing">Has housing loan?</label>
+            <select id="housing" name="housing" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div>
+            <label for="loan">Has personal loan?</label>
+            <select id="loan" name="loan" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div>
+            <label for="contact">Contact:</label>
+            <select id="contact" name="contact" required>
+                <option value="" disabled selected>Select contact type</option>
+                <option value="cellular">cellular</option>
+                <option value="telephone">telephone</option>
+            </select>
+        </div>
+        <div>
+            <label for="day_of_week">Day of Week:</label>
+            <input type="text" id="day_of_week" name="day_of_week" required>
+        </div>
+        <div>
+            <label for="month">Month:</label>
+            <input type="text" id="month" name="month" required>
+        </div>
+        <div>
+            <label for="duration">Duration:</label>
+            <input type="number" id="duration" name="duration" required>
+        </div>
+        <div>
+            <label for="campaign">Campaign:</label>
+            <input type="number" id="campaign" name="campaign" required>
+        </div>
+        <div>
+            <label for="pdays">Pdays:</label>
+            <input type="number" id="pdays" name="pdays">
+        </div>
+        <div>
+            <label for="previous">Previous:</label>
+            <input type="number" id="previous" name="previous" required>
+        </div>
+        <div>
+            <label for="poutcome">Poutcome:</label>
+            <input type="text" id="poutcome" name="poutcome">
+        </div>
+        <div>
+            <label for="y">Subscribed Term Deposit:</label>
+            <input type="text" id="y" name="y" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
