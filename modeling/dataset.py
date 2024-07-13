@@ -1,10 +1,7 @@
-import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).resolve().parents[1]))
+from config import PROJ_ROOT, PROCESSED_DATA_DIR, Path
 import pandas as pd
 from loguru import logger
 import typer
-from config import PROCESSED_DATA_DIR
 from data.raw.load_data import load_data
 
 app = typer.Typer()

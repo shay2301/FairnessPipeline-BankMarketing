@@ -1,12 +1,8 @@
-import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).resolve().parents[1]))
+from config import PROJ_ROOT, PROCESSED_DATA_DIR, MODELS_DIR, Path
 import typer
 from loguru import logger
 import pandas as pd
 import xgboost as xgb
-
-from config import MODELS_DIR, PROCESSED_DATA_DIR
 
 app = typer.Typer()
 

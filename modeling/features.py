@@ -1,12 +1,8 @@
-import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).resolve().parents[1]))
+from config import PROJ_ROOT, PROCESSED_DATA_DIR, Path
 import pandas as pd
 from sklearn.model_selection import train_test_split
 import typer
 from loguru import logger
-
-from config import PROCESSED_DATA_DIR
 
 app = typer.Typer()
 

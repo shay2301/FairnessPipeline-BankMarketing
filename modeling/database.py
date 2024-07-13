@@ -1,11 +1,8 @@
-import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).resolve().parents[1]))
+from config import PROJ_ROOT, EXTERNAL_DATA_DIR, Path
 from loguru import logger
 import pandas as pd
 import duckdb
 import typer
-from config import EXTERNAL_DATA_DIR
 
 app = typer.Typer()
 
