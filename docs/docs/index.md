@@ -8,9 +8,8 @@ End to end mlops pipeline flow for a banking marketing campaign.
 
 The Makefile contains the central entry points for common tasks related to this project.
 
-### Syncing data to cloud storage
+"make run_all" to run the end to end process
+"make requirements" to get requirements separately if needed. This is included in the steps in the previous command.
 
-* `make sync_data_up` will use `aws s3 sync` to recursively sync files in `data/` up to `s3://bucket-name/data/`.
-* `make sync_data_down` will use `aws s3 sync` to recursively sync files from `s3://bucket-name/data/` to `data/`.
 
 

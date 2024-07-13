@@ -1,6 +1,14 @@
-Getting started
+Getting Started with Model Fairness
 ===============
 
-This is where you describe how to get set up on a clean install, including the
-commands necessary to get the raw data (using the `sync_data_from_s3` command,
-for example), and then how to make the cleaned, final data sets.
+To run the end to process you can go to your terminal and write the command:
+
+## make run_all ##
+
+This command will do the following:
+
+-activate the virtual environment
+
+-install all the requirment packages
+
+-run the end to end modeling flow which results in predictions saved in our database

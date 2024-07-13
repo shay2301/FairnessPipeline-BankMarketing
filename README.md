@@ -19,11 +19,10 @@ Zack Shipman
 
 ```
 ├── LICENSE           
-├── Makefile           <- commands to run data `make data` or `make train`
+├── Makefile           <- commands to run data 'make run_all'
 ├── README.md          <- The top-level README for developers using this project.
 ├── data
 │   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
 │   ├── processed      <- The final, canonical data sets for modeling.
 │   └── raw            <- The original, immutable data dump.
 │
@@ -38,8 +37,6 @@ Zack Shipman
 ├── pyproject.toml     <- Project configuration file with package metadata for fairnesspipeline_bankmarketing
 │                         and configuration for tools like black
 │
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-│
 ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
 │   └── figures        <- Generated graphics and figures to be used in reporting
 │
@@ -53,15 +50,16 @@ Zack Shipman
     ├── __init__.py    
     │
     ├── data           <- Scripts to download or generate data
-    │   └── make_dataset.py
+    │   └── load_data.py
     │
     ├── features       <- Scripts to turn raw data into features for modeling
-    │   └── build_features.py
+    │   └── features.py
     │
-    ├── models         <- Scripts to train models and then use trained models to make
+    ├── modeling         <- Scripts to train models and then use trained models to make
     │   │                 predictions
-    │   ├── predict_model.py
-    │   └── train_model.py
+    │   ├── predict.py
+    │   └── train.py
+    |   |__ database.py -- this will dump predictions in the duckdb database
     │
     └── visualization  <- Scripts to create exploratory and results oriented visualizations
         └── visualize.py
