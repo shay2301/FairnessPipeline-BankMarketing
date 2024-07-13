@@ -1,6 +1,7 @@
 from config import PROJ_ROOT, PROCESSED_DATA_DIR, Path
 import pandas as pd
 from sklearn.model_selection import train_test_split
+import numpy as np
 import typer
 from loguru import logger
 

@@ -92,15 +92,30 @@ sync_data_up: requirements
 #################################################################################
 
 ## Run all scripts sequentially
-.PHONY: run_all
-run_all: requirements
-	@echo "Running all scripts..."
+.PHONY: config dataset features train predict database
+
+config: requirements
 	$(VENV_DIR)/bin/python modeling/config.py
+
+dataset: config
 	$(VENV_DIR)/bin/python modeling/dataset.py
+
+features: dataset
 	$(VENV_DIR)/bin/python modeling/features.py
+
+train: features
 	$(VENV_DIR)/bin/python modeling/train.py
+
+predict: train
 	$(VENV_DIR)/bin/python modeling/predict.py
+
+database: predict
 	$(VENV_DIR)/bin/python modeling/database.py
+	
+
+.PHONY: run_all
+run_all: database
+	@echo "All scripts executed in order."
 
 .DEFAULT_GOAL := help
 
