@@ -3,7 +3,6 @@ black
 flake8
 ipython
 isort
-jupyterlab
 loguru
 matplotlib
 mkdocs
@@ -19,8 +18,6 @@ ucimlrepo
 flask
 seaborn
 tqdm
-sys
 duckdb
 pathlib
 xgboost
--e .
