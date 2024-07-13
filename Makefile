@@ -7,7 +7,6 @@ PYTHON_VERSION = 3.11
 PYTHON_INTERPRETER = python3
 VENV_DIR = .venv
 
-
 #################################################################################
 # COMMANDS   
 #"In terminal write 'make run_all' to run the full flow :)#                                                                #
@@ -63,9 +62,6 @@ dataset: config
 features: dataset
 	$(VENV_DIR)/bin/python modeling/features.py
 
-sanity_checks: sanity_checks
-	$(VENV_DIR)/bin/python modeling/sanity_checks.py
-
 train: features
 	$(VENV_DIR)/bin/python modeling/train.py
 
@@ -74,16 +70,10 @@ predict: train
 
 database: predict
 	$(VENV_DIR)/bin/python modeling/database.py
-	
 
 .PHONY: run_all
-run_all:
-ifeq ($(OS),Windows_NT)
-	cmd /c run_all.bat
-else
-	make database
+run_all: database
 	@echo "All scripts executed in order."
-endif
 
 .DEFAULT_GOAL := help
 

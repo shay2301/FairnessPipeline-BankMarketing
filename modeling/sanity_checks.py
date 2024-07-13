@@ -2,14 +2,14 @@ from config import PROJ_ROOT, PROCESSED_DATA_DIR, Path
 import pandas as pd
 from loguru import logger
 import typer
-import numpy as np
+import numpy as np  # Ensure numpy is imported
 
 app = typer.Typer()
 
-@app.command()
-def check_features(features_path: Path = PROCESSED_DATA_DIR / "dataset_processed.pkl"):
+def check_features():
+    features_path = PROCESSED_DATA_DIR / "dataset_processed.pkl"
     logger.info(f"Loading features data from {features_path}...")
-    df = pd.read_pickle(features_path)
+    df_sanity = pd.read_pickle(features_path)
     
     missing_values_report = {}
     unexpected_columns_report = []
@@ -18,7 +18,7 @@ def check_features(features_path: Path = PROCESSED_DATA_DIR / "dataset_processed
     inconsistent_loan_report = 0
     
     logger.info("Checking for missing values...")
-    missing_values = df.isnull().sum()
+    missing_values = df_sanity.isnull().sum()
     missing_report = missing_values[missing_values > 0]
     if not missing_report.empty:
         missing_values_report = missing_report.to_dict()
@@ -37,16 +37,16 @@ def check_features(features_path: Path = PROCESSED_DATA_DIR / "dataset_processed
         'month_jun', 'month_mar', 'month_may', 'month_nov', 'month_oct',
         'month_sep', 'poutcome_failure', 'poutcome_other', 'poutcome_success'
     ]
-    unexpected_columns = [col for col in df.columns if col not in expected_columns]
+    unexpected_columns = [col for col in df_sanity.columns if col not in expected_columns]
     if unexpected_columns:
         unexpected_columns_report = unexpected_columns
     
     logger.info("Checking for outliers in numerical features...")
     numerical_columns = ['age', 'day_of_week', 'duration', 'campaign', 'pdays', 'previous']
     for col in numerical_columns:
-        if col in df.columns:
-            z_scores = np.abs((df[col] - df[col].mean()) / df[col].std())
-            outliers = df[z_scores > 3]
+        if col in df_sanity.columns:
+            z_scores = np.abs((df_sanity[col] - df_sanity[col].mean()) / df_sanity[col].std())
+            outliers = df_sanity[z_scores > 3]
             if not outliers.empty:
                 outliers_report[col] = outliers.shape[0]
     
@@ -60,14 +60,14 @@ def check_features(features_path: Path = PROCESSED_DATA_DIR / "dataset_processed
         'previous': (0, float('inf'))
     }
     for col, (min_val, max_val) in value_range_checks.items():
-        if col in df.columns:
-            out_of_range = df[(df[col] < min_val) | (df[col] > max_val)]
+        if col in df_sanity.columns:
+            out_of_range = df_sanity[(df_sanity[col] < min_val) | (df_sanity[col] > max_val)]
             if not out_of_range.empty:
                 out_of_range_report[col] = out_of_range.shape[0]
     
     logger.info("Checking consistency between related columns...")
-    if 'loan_yes' in df.columns and 'loan_no' in df.columns:
-        inconsistent_loan = df[(df['loan_yes'] == 1) & (df['loan_no'] == 1)]
+    if 'loan_yes' in df_sanity.columns and 'loan_no' in df_sanity.columns:
+        inconsistent_loan = df_sanity[(df_sanity['loan_yes'] == 1) & (df_sanity['loan_no'] == 1)]
         if not inconsistent_loan.empty:
             inconsistent_loan_report = inconsistent_loan.shape[0]
 
@@ -99,4 +99,4 @@ def check_features(features_path: Path = PROCESSED_DATA_DIR / "dataset_processed
         logger.info("No inconsistent loan data found.")
 
 if __name__ == "__main__":
-    app()
+    check_features()

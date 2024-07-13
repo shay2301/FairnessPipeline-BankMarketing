@@ -4,7 +4,6 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 import typer
 from loguru import logger
-import subprocess
 
 app = typer.Typer()
 
@@ -15,7 +14,6 @@ def main(
 ):
     logger.info("Loading preprocessed data...")
     df = pd.read_pickle(input_path)
-
 
     logger.info("Manipulating the data to train-test split...")
     data_y = pd.DataFrame(df['y'])
