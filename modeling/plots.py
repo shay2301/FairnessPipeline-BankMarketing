@@ -20,9 +20,17 @@ def main(
     model.load_model(model_path)
 
     logger.info("Generating feature importance plot...")
-    plt.figure(figsize=(10, 8))
-    plot_importance(model)
-    plt.title("Feature Importance")
+    plt.figure(figsize=(20, 20))
+
+    ax = plot_importance(model, importance_type='weight', max_num_features=20, height=0.8)
+    ax.figure.set_size_inches(20, 20)
+    plt.title("Feature Importance", fontsize=20)
+    plt.xlabel("F score", fontsize=15)
+    plt.ylabel("Features", fontsize=15)
+    plt.xticks(fontsize=20)
+    plt.yticks(fontsize=22)
+    for text in ax.texts:
+        text.set_fontsize(20)
     plt.savefig(output_importance)
     plt.close()
 
