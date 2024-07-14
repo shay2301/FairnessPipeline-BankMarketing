@@ -104,7 +104,7 @@ def main(
     outliers_df = pd.DataFrame(list(outliers_report.items()), columns=['Feature', 'Outliers Count'])
     outliers_df.to_csv(output_dir / "outliers_report.csv")
 
-logger.success("Sanity checks successfully processed on features...")
+    logger.success("Sanity checks successfully processed on features...")
 
 if __name__ == "__main__":
     app()
