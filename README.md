@@ -31,7 +31,6 @@ Ensure `make` is available in your PATH by running `make --version`.
 ```
 ├── LICENSE           
 ├── Makefile           <- commands to run data 'make run_all'
-|── run_all            <- batch file for windows users - navigate to file and double click or cmd 'run_all.bat'
 ├── README.md          <- The top-level README for developers using this project.
 ├── data
 │   ├── external       <- Data from third party sources.
@@ -66,6 +65,7 @@ Ensure `make` is available in your PATH by running `make --version`.
     │
     ├── features       <- Scripts to turn raw data into features for modeling
     │   └── features.py
+    |   └── sanity_checks.py   <- Script that checks for outliers and missing data
     │
     ├── modeling         <- Scripts to train models and then use trained models to make
     │   │                 predictions
