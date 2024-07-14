@@ -9,11 +9,11 @@ app = typer.Typer()
 
 @app.command()
 def main(
-    input_path: Path = PROCESSED_DATA_DIR / "dataset_processed.pkl",
+    input_path: Path = PROCESSED_DATA_DIR / "dataset_processed.csv",
     output_dir: Path = PROCESSED_DATA_DIR
 ):
     logger.info("Loading preprocessed data...")
-    df = pd.read_pickle(input_path)
+    df = pd.read_csv(input_path)
 
     logger.info("Manipulating the data to train-test split...")
     data_y = pd.DataFrame(df['y'])

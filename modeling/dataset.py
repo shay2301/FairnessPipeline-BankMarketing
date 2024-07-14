@@ -22,7 +22,7 @@ def main(
     
     df.y.replace(('yes', 'no'), (1, 0), inplace=True)
 
-    df.to_pickle(output_dir / "dataset_processed.pkl")
+    df.to_csv(output_dir / "dataset_processed.csv")
 
     logger.success("Data processing and saving complete.")
 

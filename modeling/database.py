@@ -42,7 +42,7 @@ def main(
     logger.info(f"Total number of rows: {row_count}")
 
     con.close()
-    logger.info("Banking Predictions saved to DuckDB successfully.")
+    logger.success("Banking Predictions saved to DuckDB successfully.")
 
 if __name__ == "__main__":
     main()

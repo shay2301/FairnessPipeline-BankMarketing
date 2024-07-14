@@ -77,7 +77,7 @@ sync_data_up: requirements
 #################################################################################
 
 ## Run all scripts sequentially
-.PHONY: config dataset features train predict database
+.PHONY: config dataset features sanity_checks train predict database
 
 config: requirements
 	$(PYTHON) modeling/config.py
@@ -88,7 +88,10 @@ dataset: config
 features: dataset
 	$(PYTHON) modeling/features.py
 
-train: features
+sanity_checks: features
+	$(PYTHON) modeling/sanity_checks.py
+
+train: sanity_checks
 	$(PYTHON) modeling/train.py
 
 predict: train
