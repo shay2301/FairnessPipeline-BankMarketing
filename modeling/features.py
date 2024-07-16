@@ -17,7 +17,7 @@ def main(
 
     logger.info("Manipulating the data to train-test split...")
     data_y = pd.DataFrame(df['y'])
-    data_X = df.drop('y', axis=1)
+    data_X = df.drop(['y','Unnamed: 0'], axis=1)
     X_train, X_test, y_train, y_test = train_test_split(data_X, data_y, test_size=0.3, random_state=2, stratify=data_y)
 
     logger.info(f"Saving training and testing data...")
