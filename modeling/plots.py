@@ -10,7 +10,7 @@ app = typer.Typer()
 
 
 @app.command()
-def main(
+def plotting(
     model_path: Path = MODELS_DIR / "XGB_Model.json",
     output_importance: Path = FIGURES_DIR / "feature_importance.png",
     output_tree: Path = FIGURES_DIR / "tree.txt"

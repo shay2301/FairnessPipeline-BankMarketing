@@ -7,7 +7,7 @@ import typer
 app = typer.Typer()
 
 @app.command()
-def main(
+def create_db(
     json_path: Path = EXTERNAL_DATA_DIR / "predictions.json", 
     db_path: Path = EXTERNAL_DATA_DIR / "banking_predictions.db"
 ):
@@ -45,4 +45,4 @@ def main(
     logger.success("Banking Predictions saved to DuckDB successfully.")
 
 if __name__ == "__main__":
-    main()
+    app()

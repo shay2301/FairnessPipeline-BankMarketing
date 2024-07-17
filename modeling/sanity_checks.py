@@ -7,7 +7,7 @@ import numpy as np
 app = typer.Typer()
 
 @app.command()
-def main(
+def sanity(
     input_path: Path = PROCESSED_DATA_DIR / "dataset_processed.csv",
     output_dir: Path = PROCESSED_DATA_DIR
 ):

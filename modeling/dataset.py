@@ -7,7 +7,7 @@ from data.raw.load_data import load_data
 app = typer.Typer()
 
 @app.command()
-def main(
+def create_dataset(
     output_dir: Path = PROCESSED_DATA_DIR
 ):
     logger.info(f"Output directory: {output_dir}")

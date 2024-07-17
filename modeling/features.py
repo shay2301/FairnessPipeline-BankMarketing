@@ -8,7 +8,7 @@ from loguru import logger
 app = typer.Typer()
 
 @app.command()
-def main(
+def feature_changes(
     input_path: Path = PROCESSED_DATA_DIR / "dataset_processed.csv",
     output_dir: Path = PROCESSED_DATA_DIR
 ):
