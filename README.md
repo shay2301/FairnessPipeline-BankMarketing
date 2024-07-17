@@ -72,9 +72,6 @@ Ensure `make` is available in your PATH by running `make --version`.
     │   ├── predict.py
     │   └── train.py
     |   |__ database.py -- this will dump predictions in the duckdb database
-    │
-    └── visualization  <- Scripts to create exploratory and results oriented visualizations
-        └── visualize.py
 ```
 
 --------
