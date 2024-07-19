@@ -3,6 +3,8 @@ import typer
 from loguru import logger
 import pandas as pd
 import xgboost as xgb
+from fairlearn.reductions import ExponentiatedGradient, DemographicParity
+import pickle
 
 app = typer.Typer()
 
@@ -12,6 +14,9 @@ def train_model(
     labels_path: Path = PROCESSED_DATA_DIR / "y_train.pkl",
     model_path: Path = MODELS_DIR / "XGB_Model.json"
 ):
+
+    MITIGATE = True
+           
     logger.info("Loading training data...")
     X_train = pd.read_pickle(features_path)
     y_train = pd.read_pickle(labels_path)
@@ -29,7 +34,19 @@ def train_model(
 
     logger.info("Training the model...")
     XGB_Model = xgb.train(params, dtrain, num_rounds)
-    XGB_Model.save_model(model_path)
+    
+    
+    if MITIGATE:
+        print("Training to mitigate fairnsee")
+        mitigator = ExponentiatedGradient(XGB_Model,
+                                  constraints=DemographicParity(),
+                                  eps=0.07,
+                                  )
+        mitigator.fit(X_train, y_train, sensitive_features=X_train['age'])
+        with open(model_path, 'wb') as f:
+            pickle.dump(mitigator, f)
+    else:
+        XGB_Model.save_model(model_path)
     
     logger.success("Model training complete and model saved.")
 
